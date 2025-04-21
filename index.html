@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LoveMeter - Just for Fun</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, #ffdde1, #ee9ca7);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px 30px;
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #fff0f3;
+      margin-bottom: 10px;
+    }
+
+    .message {
+      font-size: 0.95rem;
+      color: #f7f1f5;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 15px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: none;
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px 20px;
+      background: #ff758c;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #ff6a7a;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: #ffeef2;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>LoveMeter</h1>
+    <div class="message">
+      Developed by S M Ripon and Team Accessible Resource.<br>
+      This is a funny love calculator meant just for entertainment.<br>
+      <strong>Disclaimer:</strong> This is not based on any real comparison—just for fun and smiles!
+    </div>
+
+    <input type="text" id="name1" placeholder="Enter Your Name">
+    <input type="text" id="name2" placeholder="Enter Crush's Name">
+    <button onclick="calculateLove()">Calculate Love</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function calculateLove() {
+      const name1 = document.getElementById('name1').value.trim();
+      const name2 = document.getElementById('name2').value.trim();
+      const result = document.getElementById('result');
+
+      if (!name1 || !name2) {
+        result.innerHTML = "Please enter both names to get the love result!";
+        return;
+      }
+
+      const loveScore = Math.floor(Math.random() * 100) + 1;
+
+      let message = "";
+      if (loveScore > 90) {
+        message = "Perfect match! Cupid is proud!";
+      } else if (loveScore > 70) {
+        message = "Great connection! You're halfway to forever!";
+      } else if (loveScore > 50) {
+        message = "Hmm... promising! Just add some effort!";
+      } else if (loveScore > 30) {
+        message = "Not bad, but needs some serious bonding!";
+      } else {
+        message = "Oops! Maybe stay friends?";
+      }
+
+      result.innerHTML = `
+        <h2>${name1} ❤️ ${name2}</h2>
+        <p>Love Score: <strong>${loveScore}%</strong></p>
+        <p>${message}</p>
+      `;
+    }
+  </script>
+</body>
+</html>index.html
